@@ -23,7 +23,9 @@ const reducer = combineReducers({ contactForm: contactFormReducer });
 const store = createStore(reducer);
 
 history.listen(location => {
-  console.log(location)
+  const isContactVisible = location.search.match(/contact=true/i);
+
+  store.dispatch(toggleContactForm(isContactVisible))
 })
 
 const $ = document.querySelector.bind(document);

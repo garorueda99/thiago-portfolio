@@ -5,7 +5,7 @@ export function createStore(reducer, initialState) {
   let currentState = initialState;
   const listeners = [];
 
-  return {
+  const store = {
     getState() {
       return currentState;
     },
@@ -22,15 +22,19 @@ export function createStore(reducer, initialState) {
       return action;
     },
   };
+
+  store.dispatch({ type: '@@REDUX/INIT' });
+
+  return store;
 }
 
-export function combineReducers(...reducers) {
+export function combineReducers(reducers) {
   const reducerKeys = Object.keys(reducers);
 
   return function combination(state = {}, action) {
-    reducerKeys.reduce((nextState, reducerKey) => ({
+    return reducerKeys.reduce((nextState, reducerKey) => ({
       ...nextState,
-      [reducerKey]: reducers[reducerKey](state, action),
+      [reducerKey]: reducers[reducerKey](state[reducerKey], action),
     }), {})
   };
 }
