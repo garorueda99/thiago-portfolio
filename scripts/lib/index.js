@@ -1,8 +1,8 @@
-"use strict";
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (factory());
+}(this, (function () { 'use strict';
 
 // State management is tackled with a minimal version of Redux.
 // There's one global state object, and it can only be updated through a
@@ -30,19 +30,8 @@ function createStore(reducer, initialState) {
   };
 }
 
-function combineReducers() {
-  for (var _len = arguments.length, reducers = Array(_len), _key = 0; _key < _len; _key++) {
-    reducers[_key] = arguments[_key];
-  }
+var store = createStore(function () {}, 5);
 
-  var reducerKeys = Object.keys(reducers);
+console.log("Created", store);
 
-  return function combination() {
-    var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-    var action = arguments[1];
-
-    reducerKeys.reduce(function (nextState, reducerKey) {
-      return _extends({}, nextState, _defineProperty({}, reducerKey, reducers[reducerKey](state, action)));
-    }, {});
-  };
-}
+})));

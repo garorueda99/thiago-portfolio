@@ -1,36 +1,5 @@
-// State management is tackled with a minimal version of Redux.
-// There's one global state object, and it can only be updated through a
-// dispatcher.
-function createStore(reducer, initialState) {
-  let currentState = initialState;
-  const listeners = [];
+import { createStore, combineReducers } from './pseudo-redux.js';
 
-  return {
-    getState() {
-      return currentState;
-    },
+const store = createStore(function(){}, 5);
 
-    subscribe(fn) {
-      listeners.push(fn);
-    },
-
-    dispatch(action) {
-      currentState = reducer(currentState, action);
-
-      listeners.forEach(listener => listener());
-
-      return action;
-    },
-  };
-}
-
-function combineReducers(...reducers) {
-  const reducerKeys = Object.keys(reducers);
-
-  return function combination(state = {}, action) {
-    reducerKeys.reduce((nextState, reducerKey) => ({
-      ...nextState,
-      [reducerKey]: reducers[reducerKey](state, action),
-    }), {})
-  };
-}
+console.log("Created", store);
