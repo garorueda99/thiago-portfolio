@@ -4,7 +4,6 @@
          url('fira/firasans-bold-webfont.woff') format('woff');
     font-weight: 700;
     font-style: normal;
-
 }
 
 @font-face {
@@ -13,7 +12,6 @@
          url('fira/firasans-light-webfont.woff') format('woff');
     font-weight: 300;
     font-style: normal;
-
 }
 
 @font-face {
@@ -22,5 +20,11 @@
          url('fira/firasans-regular-webfont.woff') format('woff');
     font-weight: 500;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'officina sans';
+    src: url('officina/officina-sans.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
 }

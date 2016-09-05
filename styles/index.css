@@ -13,23 +13,36 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #6c6f6e;
 }
 
 h1 {
-  font-size: 72px;
+  font-family: 'officina sans';
+  font-size: 90px;
   font-weight: bold;
   margin-bottom: 2rem;
   color: #FFF;
 }
 
-.main-content {
+.invisible {
+  opacity: 0;
+}
+
+.home-section, .contact-section, .background {
   position: absolute;
   top: 10px;
   left: 10px;
   right: 10px;
   bottom: 10px;
   overflow: hidden;
+}
+
+.background {
   background: #c9d3d2;
+}
+
+.home-section {
+  z-index: 2;
 }
 
 .about-me {
@@ -41,15 +54,39 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: opacity 1000ms;
+  will-change: opacity;
 }
 
 .about-paragraphs p {
   margin-bottom: 2rem;
+  line-height: 1.4em;
 }
 
+.social-media-links {
+  margin: 2.5rem 0;
+}
+.social-media-links a {
+  text-decoration: none;
+  margin-right: 1rem;
+}
 .social-media-links img {
   width: 23px;
   height: 23px;
+}
+
+.say-hello {
+  font-weight: bold;
+  color: #6c6f6e;
+  text-decoration: none;
+}
+.say-hello-text {
+  display: inline-block;
+  border-bottom: 1px solid #6c6f6e;
+}
+.say-hello .arrow-right {
+  height: 17px;
+  vertical-align: bottom;
 }
 
 .main-image {
@@ -58,6 +95,8 @@ h1 {
   bottom: 0;
   max-width: 40%;
   max-height: 95%;
+  transition: transform 1000ms;
+  will-change: transform;
 }
 
 .thiago {
@@ -67,12 +106,39 @@ h1 {
   margin-bottom: -3px;
 }
 
-.photo-outline {
+.contact-section {
+  z-index: 1;
+}
+
+.contact-form {
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+  max-width: 45%;
+  max-height: 95%;
+}
+
+.contact-outline, .contact-contents {
   position: absolute;
   z-index: 0;
   width: 85%;
-  height: 85%;
-  right: 25%;
-  bottom: 10%;
+  height: 75%;
+  right: 15%;
+  bottom: 15%;
+}
+
+.contact-outline {
   border: 1px solid #FFF;
+}
+
+.contact-contents {
+  background: #333545;
+  opacity: 0;
+  transition: opacity 1000ms;
+
+}
+
+.contact-contents.active {
+  opacity: 1;
+  transition: opacity 1000ms 750ms;
 }

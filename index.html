@@ -11,8 +11,9 @@
 	<![endif]-->
 </head>
 <body>
-  <section class="main-content">
-    <div class="about-me">
+  <div class="background"></div>
+  <section class="home-section">
+    <div class="about-me js-about-me">
       <h1>Hello,</h1>
       <div class="about-paragraphs">
         <p>I’m Thiago Costa, Lorem ipsium dolor amet.</p>
@@ -21,19 +22,37 @@
         </p>
       </div>
       <div class="social-media-links">
-        <img src="assets/images/facebook.svg" />
-        <img src="assets/images/dribbble.svg" />
-        <img src="assets/images/skype.svg" />
-        <img src="assets/images/instagram.svg" />
+        <a href="http://facebook.com">
+          <img src="assets/images/facebook.svg" />
+        </a>
+        <a href="http://dribbble.com">
+          <img src="assets/images/dribbble.svg" />
+        </a>
+        <a href="http://skype.com">
+          <img src="assets/images/skype.svg" />
+        </a>
+        <a href="instagram">
+          <img src="assets/images/instagram.svg" />
+        </a>
       </div>
 
-      <a class="js-click-contact-link" href="?contact">Say hello</a>
+      <a class="say-hello js-click-contact-link" href="?contact">
+        <span class="say-hello-text">Say hello</span>
+        <img class="arrow-right" src="assets/images/arrow-right.png" />
+      </a>
     </div>
 
-    <div class="main-image">
-      <div class="photo-outline"></div>
+    <div class="main-image js-main-image">
       <img class="thiago" src="assets/images/thiago.png" />
     </div>
+  </section>
+
+  <section class="contact-section">
+    <form class="contact-form">
+      <img class="thiago invisible" src="assets/images/thiago.png" />
+      <div class="contact-outline"></div>
+      <div class="contact-contents js-contact-contents"></div>
+    </form>
   </section>
 
   <script src="lib/index.js"></script>
