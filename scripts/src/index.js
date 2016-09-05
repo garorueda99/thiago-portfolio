@@ -24,8 +24,6 @@ function createStore(reducer, initialState) {
   };
 }
 
-console.log("Woo there")
-
 function combineReducers(...reducers) {
   const reducerKeys = Object.keys(reducers);
 

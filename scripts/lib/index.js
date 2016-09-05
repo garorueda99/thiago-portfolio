@@ -30,8 +30,6 @@ function createStore(reducer, initialState) {
   };
 }
 
-console.log("Woo");
-
 function combineReducers() {
   for (var _len = arguments.length, reducers = Array(_len), _key = 0; _key < _len; _key++) {
     reducers[_key] = arguments[_key];
