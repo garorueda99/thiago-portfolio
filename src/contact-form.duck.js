@@ -10,7 +10,7 @@ export const toggleContactForm = isVisible => ({
 // Reducer
 export default function contactFormReducer(state = false, action) {
   switch (action.type) {
-    case TOGGLE_CONTACT_FORM: return !state;
+    case TOGGLE_CONTACT_FORM: return action.isVisible;
     default: return state;
   }
 }

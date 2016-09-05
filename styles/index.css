@@ -35,6 +35,7 @@ h1 {
   right: 10px;
   bottom: 10px;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .background {
@@ -43,6 +44,15 @@ h1 {
 
 .home-section {
   z-index: 2;
+}
+.home-section.active {
+  pointer-events: all;
+}
+.contact-section {
+  z-index: 1;
+}
+.contact-section.active {
+  pointer-events: all;
 }
 
 .about-me {
@@ -83,10 +93,12 @@ h1 {
 .say-hello-text {
   display: inline-block;
   border-bottom: 1px solid #6c6f6e;
+  pointer-events: none;
 }
 .say-hello .arrow-right {
   height: 17px;
   vertical-align: bottom;
+  pointer-events: none;
 }
 
 .main-image {
@@ -104,10 +116,6 @@ h1 {
   max-width: 100%;
   max-height: 100%;
   margin-bottom: -3px;
-}
-
-.contact-section {
-  z-index: 1;
 }
 
 .contact-form {
@@ -133,12 +141,66 @@ h1 {
 
 .contact-contents {
   background: #333545;
+  box-shadow: 0px 10px 45px rgba(0,0,0,0.3);
   opacity: 0;
   transition: opacity 1000ms;
 
 }
-
 .contact-contents.active {
   opacity: 1;
   transition: opacity 1000ms 750ms;
+}
+
+.contact-contents .close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  text-decoration: none;
+}
+.contact-contents .close img {
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+}
+
+.contact-contents h3 {
+  font-size: 36px;
+  font-weight: 100;
+  color: #FFF;
+  padding: 10%;
+}
+
+.contact-contents .input-field {
+  padding: 0 10%;
+  margin: 1rem 0;
+}
+
+.contact-contents .submit {
+  position: absolute;
+  height: 60px;
+  bottom: -30px;
+  right: -15px;
+  background: #ffd69d;
+  padding: 0 4rem;
+  box-shadow: 0px 10px 45px rgba(0,0,0,0.3);
+  border: 0;
+  font-weight: bold;
+}
+
+.contact-contents .submit.active {
+  animation: buttonSlideOut 1500ms 500ms both;
+}
+
+@keyframes buttonSlideOut {
+  from { transform: translate(-30px, -45px); },
+  to { transform: translate(0, 0)}
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #ffd69d;
+  box-shadow: 0 1px 0 0 #ffd69d;
+}
+
+input:not([type]):focus:not([readonly])+label, input[type=text]:focus:not([readonly])+label, input[type=password]:focus:not([readonly])+label, input[type=email]:focus:not([readonly])+label, input[type=url]:focus:not([readonly])+label, input[type=time]:focus:not([readonly])+label, input[type=date]:focus:not([readonly])+label, input[type=datetime]:focus:not([readonly])+label, input[type=datetime-local]:focus:not([readonly])+label, input[type=tel]:focus:not([readonly])+label, input[type=number]:focus:not([readonly])+label, input[type=search]:focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
+  color: #ffd69d;
 }
