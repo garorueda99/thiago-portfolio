@@ -188,14 +188,71 @@ h1 {
 }
 
 .contact-contents .submit.active {
-  animation: buttonSlideOut 1500ms 500ms both;
+  animation: buttonSlideOutDesktop 1500ms 500ms both;
 }
 
-@keyframes buttonSlideOut {
+/* Mobile */
+@media ( max-width: 800px ) {
+  .about-me {
+    left: 5%;
+    right: 5%;
+  }
+  .main-image {
+    display: none;
+  }
+
+  .contact-section {
+    z-index: 3;
+  }
+
+  .contact-form {
+    top: 0;
+    left: 3%;
+    right: 3%;
+    bottom: 0;
+    margin: auto;
+    max-width: 94%;
+    max-height: 80%;
+
+  }
+
+  .contact-outline {
+    border: 0;
+  }
+
+  .contact-contents {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .contact-contents .submit {
+    left: 0;
+    right: 0;
+    width: 180px;
+    margin: auto;
+  }
+  .contact-contents .submit.active {
+    animation: buttonSlideOutMobile 1500ms 500ms both;
+  }
+}
+
+
+/* Animations */
+@keyframes buttonSlideOutDesktop {
   from { transform: translate(-30px, -45px); },
-  to { transform: translate(0, 0)}
+  to { transform: translate(0, 0); }
+}
+@keyframes buttonSlideOutMobile {
+  from { transform: translateY(-45px); },
+  to { transform: translateY(0); }
 }
 
+
+
+/* Materialize Overrides */
 input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid #ffd69d;
   box-shadow: 0 1px 0 0 #ffd69d;
