@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" media="screen" href="assets/fonts/stylesheet.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="styles/reset.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="styles/index.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -17,10 +18,12 @@
   <div class="background"></div>
   <section class="home-section js-home-section">
     <div class="about-me js-about-me">
-      <h1>Hello,</h1>
+      <h1 data-translate-key="mainHeading">Hello,</h1>
       <div class="about-paragraphs">
-        <p>I’m Thiago Costa, Lorem ipsium dolor amet.</p>
-        <p>
+        <p data-translate-key="firstParagraph">
+          I’m Thiago Costa, Lorem ipsium dolor amet.
+        </p>
+        <p data-translate-key="secondParagraph">
           Rather than telling stories through words, designers strive to interpret their client’s narrative and translate it into a universal language. I have extensive experience in spinning visual tales through the harmony of branding, web design, editorial and typography.
         </p>
       </div>
@@ -40,7 +43,9 @@
       </div>
 
       <a class="say-hello js-history-link" href="?contact=true">
-        <span class="say-hello-text">Say hello</span>
+        <span class="say-hello-text" data-translate-key="contactLink">
+          Say hello
+        </span>
         <img class="arrow-right" src="assets/images/arrow-right.png" />
       </a>
     </div>
@@ -60,24 +65,38 @@
           <img src="assets/images/close.png" />
         </a>
 
-        <h3>Say hello!</h3>
+        <h3 data-translate-key="contactFormHeading">Say hello!</h3>
         <div class="input-field">
           <input id="name" type="text" class="validate">
-          <label for="name">Name</label>
+          <label for="name" data-translate-key="contactNameLabel">Name</label>
         </div>
         <div class="input-field">
           <input id="email" type="text" class="validate">
-          <label for="email">Email</label>
+          <label for="email" data-translate-key="contactEmailLabel">Email</label>
         </div>
         <div class="input-field">
           <textarea id="message" class="materialize-textarea"></textarea>
-          <label for="message">Write me something, tell me a joke...</label>
+          <label for="message" data-translate-key="contactMessageLabel">
+            Write me something, tell me a joke...
+          </label>
         </div>
 
-        <button class="submit">Submit</button>
+        <button class="submit" data-translate-key="contactFormSubmit">Submit</button>
       </div>
     </form>
   </section>
+
+  <div class="translation-controls">
+    <div class="translation-control js-translation-control" data-language="en">
+      EN
+    </div>
+    <div class="translation-control js-translation-control" data-language="fr">
+      FR
+    </div>
+    <div class="translation-control js-translation-control" data-language="pt">
+      PT
+    </div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>

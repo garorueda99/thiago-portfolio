@@ -1,8 +1,8 @@
 import { createHistory } from 'history';
 import { createStore, combineReducers } from './pseudo-redux.js';
+import { translateAll, bindTranslationHandlers } from './i18n';
 
 import contactForm, { toggleContactForm } from './contact-form.duck';
-
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -11,6 +11,9 @@ const history = createHistory()
 
 const reducer = combineReducers({ contactForm });
 const store = createStore(reducer);
+
+translateAll('en');
+bindTranslationHandlers('.js-translation-control');
 
 // Reconciler
 // This is invoked whenever the route changes, and it's responsible for doing
@@ -67,7 +70,7 @@ history.listen(updateStateFromLocation);
 
 // We want to update the state on page-load, but we can't move Thiago until
 // the image has resolved.
-const $thiagoImg = $('.thiago');
+const $thiagoImg = document.querySelector('.thiago');
 if ($thiagoImg.complete) {
   updateStateFromLocation(window.location);
 } else {

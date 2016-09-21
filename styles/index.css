@@ -85,6 +85,31 @@ h1 {
   height: 23px;
 }
 
+.translation-controls {
+  position: absolute;
+  z-index: 10;
+  width: 7%;
+  top: 0;
+  bottom: 0;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.translation-control {
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #686c73;
+  border: 1px solid #686c73;
+  margin: 15px;
+  cursor: pointer;
+}
+
 .say-hello {
   font-weight: bold;
   color: #6c6f6e;
@@ -197,6 +222,22 @@ h1 {
     left: 5%;
     right: 5%;
   }
+
+  .translation-controls {
+    width: auto;
+    top: 20px;
+    bottom: auto;
+    right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .translation-control {
+    margin: 10px 10px;
+  }
+
   .main-image {
     display: none;
   }
