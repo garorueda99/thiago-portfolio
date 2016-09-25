@@ -1,19 +1,18 @@
 import { createHistory } from 'history';
 import { createStore, combineReducers } from './pseudo-redux.js';
-import { translateAll, bindTranslationHandlers } from './i18n';
+import translations from './data/translations';
 
 import contactForm, { toggleContactForm } from './contact-form.duck';
+import language, { switchLanguage } from './language.duck';
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-const history = createHistory()
+const history = createHistory();
 
-const reducer = combineReducers({ contactForm });
+const reducer = combineReducers({ contactForm, language });
 const store = createStore(reducer);
 
-translateAll('en');
-bindTranslationHandlers('.js-translation-control');
 
 // Reconciler
 // This is invoked whenever the route changes, and it's responsible for doing
@@ -28,7 +27,9 @@ const createReconciler = () => {
   const $contactSubmit = $('.js-contact-contents .submit');
 
   return function reconciler() {
-    const isContactVisible = store.getState().contactForm;
+    const state = store.getState();
+    const isContactVisible = state.contactForm;
+    const language = state.language;
 
     if (isContactVisible) {
       // Figure out how much Thiago needs to be moved over by.
@@ -52,11 +53,41 @@ const createReconciler = () => {
       $contactSection.classList.remove('active');
       $contactSubmit.classList.remove('active');
     }
+
+    translateAll(language);
   }
 }
 
 const reconciler = createReconciler();
-store.subscribe(reconciler)
+store.subscribe(reconciler);
+
+
+// i18n stuff
+const getTranslation = language => key => translations[language][key];
+
+function translateAll(language) {
+  const getTranslationInLanguage = getTranslation(language);
+
+  $$('[data-translate-key]').forEach(elem => {
+    const key = elem.dataset.translateKey;
+    const translatedContents = getTranslationInLanguage(key);
+
+    elem.innerText = translatedContents;
+  });
+}
+
+function bindTranslationHandlers(selector) {
+  const elements = $$(selector);
+
+  elements.forEach(elem => {
+    elem.addEventListener('click', () => {
+      const { language } = elem.dataset;
+      store.dispatch(switchLanguage(language));
+    });
+  });
+}
+
+bindTranslationHandlers('.js-translation-control');
 
 
 // History integration

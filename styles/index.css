@@ -16,12 +16,17 @@ body {
   color: #6c6f6e;
 }
 
-h1 {
+.main-heading {
   font-family: 'officina sans';
   font-size: 90px;
   font-weight: bold;
   margin-bottom: 2rem;
   color: #FFF;
+}
+
+.main-heading > span:not(.is-active) {
+  opacity: 0.2;
+  transition: 250ms;
 }
 
 .invisible {
