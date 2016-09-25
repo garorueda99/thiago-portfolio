@@ -1,6 +1,7 @@
 import { createHistory } from 'history';
 import { createStore, combineReducers } from './pseudo-redux.js';
 import translations from './data/translations';
+import updateAnimatedHeading from './update-animated-heading';
 
 import contactForm, { toggleContactForm } from './contact-form.duck';
 import language, { switchLanguage } from './language.duck';
@@ -26,35 +27,47 @@ const createReconciler = () => {
   const $contactContents = $('.js-contact-contents');
   const $contactSubmit = $('.js-contact-contents .submit');
 
+  let previousState = store.getState();
+
   return function reconciler() {
     const state = store.getState();
     const isContactVisible = state.contactForm;
     const language = state.language;
 
-    if (isContactVisible) {
-      // Figure out how much Thiago needs to be moved over by.
-      const thiagoOffset = $thiago.getBoundingClientRect().left * -0.85;
+    const contactFormChanged = state.contactForm !== previousState.contactForm;
 
-      $thiago.style.transform = `translateX(${thiagoOffset}px)`;
-      $aboutMe.style.opacity = 0.25;
+    if (contactFormChanged) {
+      if (isContactVisible) {
+        // Figure out how much Thiago needs to be moved over by.
+        const thiagoOffset = $thiago.getBoundingClientRect().left * -0.85;
 
-      $contactContents.classList.add('active');
+        $thiago.style.transform = `translateX(${thiagoOffset}px)`;
+        $aboutMe.style.opacity = 0.25;
 
-      $homeSection.classList.remove('active');
-      $contactSection.classList.add('active');
-      $contactSubmit.classList.add('active');
-    } else {
-      $thiago.style.transform = '';
-      $aboutMe.style.opacity = 1;
+        $contactContents.classList.add('active');
 
-      $contactContents.classList.remove('active');
+        $homeSection.classList.remove('active');
+        $contactSection.classList.add('active');
+        $contactSubmit.classList.add('active');
+      } else {
+        $thiago.style.transform = '';
+        $aboutMe.style.opacity = 1;
 
-      $homeSection.classList.add('active');
-      $contactSection.classList.remove('active');
-      $contactSubmit.classList.remove('active');
+        $contactContents.classList.remove('active');
+
+        $homeSection.classList.add('active');
+        $contactSection.classList.remove('active');
+        $contactSubmit.classList.remove('active');
+      }
     }
 
-    translateAll(language);
+    const languageChanged = state.language !== previousState.language;
+    if (languageChanged) {
+      translateAll(language);
+      updateAnimatedHeading(language);
+    }
+
+    previousState = state;
   }
 }
 
@@ -122,6 +135,3 @@ $$('.js-history-link').forEach(link => {
     history.push({ search });
   });
 });
-
-// TEMP
-window.store = store;

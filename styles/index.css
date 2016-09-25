@@ -22,11 +22,14 @@ body {
   font-weight: bold;
   margin-bottom: 2rem;
   color: #FFF;
+  transition: transform 400ms;
+  will-change: transform;
+  cursor: default;
 }
 
-.main-heading > span:not(.is-active) {
-  opacity: 0.2;
-  transition: 250ms;
+.main-heading > span {
+  transition: opacity 250ms;
+  will-change: opacity;
 }
 
 .invisible {
