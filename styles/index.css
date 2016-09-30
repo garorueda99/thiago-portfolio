@@ -25,9 +25,11 @@ body {
   transition: transform 400ms;
   will-change: transform;
   cursor: default;
+  white-space: nowrap;
 }
 
 .main-heading > span {
+  opacity: 0.2;
   transition: opacity 250ms;
   will-change: opacity;
 }
@@ -51,13 +53,13 @@ body {
 }
 
 .home-section {
-  z-index: 2;
+  z-index: 1;
 }
 .home-section.active {
   pointer-events: all;
 }
 .contact-section {
-  z-index: 1;
+  z-index: 2;
 }
 .contact-section.active {
   pointer-events: all;
@@ -74,6 +76,10 @@ body {
   justify-content: center;
   transition: opacity 1000ms;
   will-change: opacity;
+}
+
+.about-paragraphs {
+  max-width: 600px;
 }
 
 .about-paragraphs p {
@@ -136,8 +142,10 @@ body {
 
 .main-image {
   position: absolute;
+  z-index: 3;
   right: 5px;
   bottom: 0;
+  border-bottom: 10px solid #FFF;
   max-width: 40%;
   max-height: 95%;
   transition: transform 1000ms;
@@ -309,4 +317,10 @@ input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]),
 
 input:not([type]):focus:not([readonly])+label, input[type=text]:focus:not([readonly])+label, input[type=password]:focus:not([readonly])+label, input[type=email]:focus:not([readonly])+label, input[type=url]:focus:not([readonly])+label, input[type=time]:focus:not([readonly])+label, input[type=date]:focus:not([readonly])+label, input[type=datetime]:focus:not([readonly])+label, input[type=datetime-local]:focus:not([readonly])+label, input[type=tel]:focus:not([readonly])+label, input[type=number]:focus:not([readonly])+label, input[type=search]:focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
   color: #ffd69d;
+}
+
+textarea.materialize-textarea {
+  min-height: auto !important;
+  height: 16.8px;
+  padding: 1.2rem 0 0.8rem;
 }

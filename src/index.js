@@ -101,7 +101,7 @@ function bindTranslationHandlers(selector) {
 }
 
 bindTranslationHandlers('.js-translation-control');
-
+updateAnimatedHeading('en');
 
 // History integration
 function updateStateFromLocation(location) {
