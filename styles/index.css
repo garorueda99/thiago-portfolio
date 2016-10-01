@@ -150,6 +150,7 @@ body {
   max-height: 95%;
   transition: transform 1000ms;
   will-change: transform;
+  overflow: hidden;
 }
 
 .thiago {
