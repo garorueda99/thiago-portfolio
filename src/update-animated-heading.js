@@ -16,7 +16,8 @@ export default function updateAnimatedHeading(currentLanguage) {
     const ptWidth = ptHeading.getBoundingClientRect().width;
 
     // Handle 'active' heading opacity change
-    $$('.main-heading > span').forEach(elem => {
+    const headingSpans = [...$$('.main-heading > span')];
+    headingSpans.forEach(elem => {
       elem.style.opacity = 0.2;
     });
     $(`[data-language=${currentLanguage}]`).style.opacity = 1;

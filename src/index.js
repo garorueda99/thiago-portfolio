@@ -81,7 +81,11 @@ const getTranslation = language => key => translations[language][key];
 function translateAll(language) {
   const getTranslationInLanguage = getTranslation(language);
 
-  $$('[data-translate-key]').forEach(elem => {
+  // Find all elements that need translating, and convert the result into
+  // a true array (and not just an array-like object).
+  const elements = [...$$('[data-translate-key]')];
+
+  elements.forEach(elem => {
     const key = elem.dataset.translateKey;
     const translatedContents = getTranslationInLanguage(key);
 
@@ -90,7 +94,7 @@ function translateAll(language) {
 }
 
 function bindTranslationHandlers(selector) {
-  const elements = $$(selector);
+  const elements = [...$$(selector)];
 
   elements.forEach(elem => {
     elem.addEventListener('click', () => {
@@ -123,8 +127,8 @@ if ($thiagoImg.complete) {
   });
 }
 
-
-$$('.js-history-link').forEach(link => {
+const historyLinkElements = [...$$('.js-history-link')];
+historyLinkElements.forEach(link => {
   link.addEventListener('click', ev => {
     ev.preventDefault();
 
