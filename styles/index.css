@@ -217,6 +217,10 @@ body {
   margin: 1rem 0;
 }
 
+.contact-contents label {
+  left: 10%;
+}
+
 .contact-contents .submit {
   position: absolute;
   height: 60px;
@@ -321,7 +325,7 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:focus:not([reado
 }
 
 textarea.materialize-textarea {
-  min-height: auto !important;
+  min-height: 16.8px;
   height: 16.8px;
   padding: 1.2rem 0 0.8rem;
 }
